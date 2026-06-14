@@ -1,0 +1,122 @@
+{
+  "updatedAt": "2026-06-14T06:14:08.421955+00:00",
+  "updatedAtCST": "2026-06-14 14:14 CST",
+  "dateFrom": "2026-06-14",
+  "dateTo": "2026-09-12",
+  "totalTickers": 24,
+  "stats": {
+    "total": 0,
+    "confirmed3": 0,
+    "confirmed2": 0,
+    "single": 0,
+    "conflict": 0,
+    "urgent7d": 0
+  },
+  "alerts": {
+    "conflicts": [],
+    "urgent": [],
+    "newTickers": []
+  },
+  "events": [],
+  "tickerMeta": {
+    "MU": {
+      "name": "Micron",
+      "newIpo": false
+    },
+    "SNDK": {
+      "name": "SanDisk",
+      "newIpo": false
+    },
+    "NVDA": {
+      "name": "NVIDIA",
+      "newIpo": false
+    },
+    "TSLA": {
+      "name": "Tesla",
+      "newIpo": false
+    },
+    "AMD": {
+      "name": "AMD",
+      "newIpo": false
+    },
+    "INTC": {
+      "name": "Intel",
+      "newIpo": false
+    },
+    "MSFT": {
+      "name": "Microsoft",
+      "newIpo": false
+    },
+    "AAPL": {
+      "name": "Apple",
+      "newIpo": false
+    },
+    "AMZN": {
+      "name": "Amazon",
+      "newIpo": false
+    },
+    "GOOGL": {
+      "name": "Alphabet A",
+      "newIpo": false
+    },
+    "META": {
+      "name": "Meta",
+      "newIpo": false
+    },
+    "AVGO": {
+      "name": "Broadcom",
+      "newIpo": false
+    },
+    "MRVL": {
+      "name": "Marvell",
+      "newIpo": false
+    },
+    "PLTR": {
+      "name": "Palantir",
+      "newIpo": false
+    },
+    "ORCL": {
+      "name": "Oracle",
+      "newIpo": false
+    },
+    "LLY": {
+      "name": "Eli Lilly",
+      "newIpo": false
+    },
+    "NBIS": {
+      "name": "Nebius",
+      "newIpo": false
+    },
+    "HOOD": {
+      "name": "Robinhood",
+      "newIpo": false
+    },
+    "CRWV": {
+      "name": "CoreWeave",
+      "newIpo": true,
+      "ipoNote": "2025年3月IPO"
+    },
+    "RKLB": {
+      "name": "Rocket Lab",
+      "newIpo": false
+    },
+    "MSTR": {
+      "name": "MicroStrategy",
+      "newIpo": false
+    },
+    "CRCL": {
+      "name": "Circle",
+      "newIpo": true,
+      "ipoNote": "2025年上市"
+    },
+    "HIMS": {
+      "name": "Hims&Hers",
+      "newIpo": false
+    },
+    "SPCX": {
+      "name": "SpaceX",
+      "newIpo": true,
+      "ipoNote": "2026年6月12日上市，务必人工核查"
+    }
+  }
+}
