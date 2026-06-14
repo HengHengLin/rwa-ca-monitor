@@ -15,7 +15,8 @@ DAYS_AHEAD  = 90
 TICKERS = [
     "MU","SNDK","NVDA","TSLA","AMD","INTC","MSFT","AAPL","AMZN",
     "GOOGL","META","AVGO","MRVL","PLTR","ORCL","LLY","NBIS",
-    "HOOD","CRWV","RKLB","MSTR","CRCL","HIMS","SPCX"
+    "HOOD","CRWV","RKLB","MSTR","CRCL","HIMS","SPCX","COIN",
+    "SOXL","EWY","QQQ","DRAM","CBRS"
 ]
 
 TICKER_META = {
@@ -43,6 +44,12 @@ TICKER_META = {
     "CRCL": {"name":"Circle",        "newIpo":True,  "ipoNote":"2025年上市，需人工复核"},
     "HIMS": {"name":"Hims&Hers",     "newIpo":False},
     "SPCX": {"name":"SpaceX",        "newIpo":True,  "ipoNote":"2026年6月12日上市，API尚未收录，务必人工核查"},
+    "COIN": {"name":"Coinbase",       "newIpo":False},
+    "SOXL": {"name":"Direxion 3x半导体ETF", "newIpo":False},
+    "EWY":  {"name":"iShares韩国ETF", "newIpo":False},
+    "QQQ":  {"name":"Invesco QQQ",    "newIpo":False},
+    "DRAM": {"name":"Roundhill DRAM ETF","newIpo":False},
+    "CBRS": {"name":"Cerebras",       "newIpo":True, "ipoNote":"2024年上市，较新标的"},
 }
 
 # SEC EDGAR CIK（只对新上市/特殊标的）
