@@ -429,7 +429,7 @@ function renderTG(events) {
   const urgentT   = new Set(events.filter(e=>e.daysLeft>=0&&e.daysLeft<=3).map(e=>e.ticker));
   const eventT    = new Set(events.map(e=>e.ticker));
   const newT      = new Set(events.filter(e=>e.isNewTicker).map(e=>e.ticker));
-  const ALL = ["MU","SNDK","NVDA","TSLA","AMD","INTC","MSFT","AAPL","AMZN","GOOGL","META","AVGO","MRVL","PLTR","ORCL","LLY","NBIS","HOOD","CRWV","RKLB","MSTR","CRCL","HIMS","SPCX"];
+  const ALL = ["MU","SNDK","NVDA","TSLA","AMD","INTC","MSFT","AAPL","AMZN","GOOGL","META","AVGO","MRVL","PLTR","ORCL","LLY","NBIS","HOOD","CRWV","RKLB","MSTR","CRCL","HIMS","SPCX","COIN","SOXL","EWY","QQQ","DRAM","CBRS"];
   document.getElementById('tg').innerHTML = ALL.map(t => {
     const cls = conflictT.has(t)?'conflict':urgentT.has(t)?'urg':eventT.has(t)?'ev':newT.has(t)?'new-stock':'';
     const dot = conflictT.has(t)||urgentT.has(t)?`<span class="cdot" style="background:var(--danger)"></span>`:
