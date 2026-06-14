@@ -457,8 +457,8 @@ function openMo(idx) {
     <div class="manual-box warn-box">
       <div class="manual-box-title" style="color:var(--warn)">⚠ 新上市标的 — ${ev.ipoNote||'API数据可能不完整'}</div>
       <div class="manual-links">
-        <a class="manual-link" href="https://www.businesswire.com/news/home/search?rq=${ev.ticker}" target="_blank">📰 BusinessWire — ${ev.ticker}（最快）</a>
-        <a class="manual-link" href="https://www.globenewswire.com/search/keyword/${ev.ticker}" target="_blank">📰 GlobeNewswire — ${ev.ticker}</a>
+        <a class="manual-link" href="https://www.businesswire.com/news/home/search?rq=${ev.ticker}" target="_blank">📰 BusinessWire — 搜索 ${ev.ticker}（最快）</a>
+        <a class="manual-link" href="https://www.globenewswire.com/search/keyword/${ev.ticker}" target="_blank">📰 GlobeNewswire — 搜索 ${ev.ticker}</a>
         <a class="manual-link" href="https://www.nasdaq.com/market-activity/stocks/${ev.ticker.toLowerCase()}/dividend-history" target="_blank">📊 Nasdaq 分红记录</a>
         <a class="manual-link" href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&ticker=${ev.ticker}&type=8-K&dateb=&owner=include&count=10" target="_blank">📄 SEC EDGAR 8-K（备用）</a>
       </div>
@@ -487,9 +487,9 @@ function openMo(idx) {
     <div class="manual-box">
       <div class="manual-box-title">🔗 人工核查（信息速度：新闻稿 > Nasdaq > SEC）</div>
       <div class="manual-links">
-        <a class="manual-link" href="https://www.businesswire.com/news/home/search?rq=${ev.ticker}" target="_blank">📰 BusinessWire — ${ev.ticker}（最快，公告第一手）</a>
-        <a class="manual-link" href="https://www.globenewswire.com/search/keyword/${ev.ticker}" target="_blank">📰 GlobeNewswire — ${ev.ticker}</a>
-        <a class="manual-link" href="https://www.prnewswire.com/news-releases/news-releases-list.html?Companies=${ev.ticker}" target="_blank">📰 PR Newswire — ${ev.ticker}</a>
+        <a class="manual-link" href="https://www.businesswire.com/news/home/search?rq=${ev.ticker}" target="_blank">📰 BusinessWire — 搜索 ${ev.ticker}</a>
+        <a class="manual-link" href="https://www.globenewswire.com/search/keyword/${ev.ticker}" target="_blank">📰 GlobeNewswire — 搜索 ${ev.ticker}</a>
+        <a class="manual-link" href="https://www.prnewswire.com/rss/news-releases-list.rss" target="_blank">📰 PR Newswire — 最新新闻稿</a>
         <a class="manual-link" href="https://www.nasdaq.com/market-activity/stocks/${ev.ticker.toLowerCase()}/dividend-history" target="_blank">📊 Nasdaq 官方分红记录</a>
         <a class="manual-link" href="https://finance.yahoo.com/quote/${ev.ticker}/news/" target="_blank">📊 Yahoo Finance 新闻</a>
         <a class="manual-link" href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&ticker=${ev.ticker}&type=8-K&dateb=&owner=include&count=10" target="_blank">📄 SEC EDGAR 8-K（备用）</a>
