@@ -1,9 +1,9 @@
 {
-  "updatedAt": "2026-06-14T07:17:50.768345+00:00",
-  "updatedAtCST": "2026-06-14 15:17 CST",
+  "updatedAt": "2026-06-14T07:41:55.274703+00:00",
+  "updatedAtCST": "2026-06-14 15:41 CST",
   "dateFrom": "2026-06-14",
   "dateTo": "2026-09-12",
-  "totalTickers": 24,
+  "totalTickers": 30,
   "dataNote": "数据来源：Polygon（主）+ SEC EDGAR（新上市兜底）。FMP免费层不支持按ticker查询已禁用。",
   "stats": {
     "total": 4,
@@ -213,6 +213,31 @@
       "name": "SpaceX",
       "newIpo": true,
       "ipoNote": "2026年6月12日上市，API尚未收录，务必人工核查"
+    },
+    "COIN": {
+      "name": "Coinbase",
+      "newIpo": false
+    },
+    "SOXL": {
+      "name": "Direxion 3x半导体ETF",
+      "newIpo": false
+    },
+    "EWY": {
+      "name": "iShares韩国ETF",
+      "newIpo": false
+    },
+    "QQQ": {
+      "name": "Invesco QQQ",
+      "newIpo": false
+    },
+    "DRAM": {
+      "name": "Roundhill DRAM ETF",
+      "newIpo": false
+    },
+    "CBRS": {
+      "name": "Cerebras",
+      "newIpo": true,
+      "ipoNote": "2024年上市，较新标的"
     }
   }
 }
