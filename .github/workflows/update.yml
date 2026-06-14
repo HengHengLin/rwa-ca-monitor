@@ -1,0 +1,36 @@
+name: 每日公司行动数据更新
+
+on:
+  schedule:
+    # 北京时间 08:30 = UTC 00:30
+    - cron: '30 0 * * *'
+    # 北京时间 21:30 = UTC 13:30
+    - cron: '30 13 * * *'
+  workflow_dispatch:  # 允许手动触发
+
+jobs:
+  fetch-and-update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # 允许写入 data.json
+
+    steps:
+      - name: 拉取代码
+        uses: actions/checkout@v4
+
+      - name: 安装 Python 依赖
+        run: pip install requests
+
+      - name: 拉取公司行动数据
+        env:
+          POLYGON_KEY: ${{ secrets.POLYGON_KEY }}
+          FMP_KEY: ${{ secrets.FMP_KEY }}
+        run: python fetch_data.py
+
+      - name: 提交并推送 data.json
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data.json
+          git diff --staged --quiet || git commit -m "📊 更新公司行动数据 $(date -u '+%Y-%m-%d %H:%M UTC')"
+          git push
