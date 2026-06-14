@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>公司行动监控 · RWA看板</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap');
+  :root {
+    --bg:#0a0e1a;--surface:#111827;--surface2:#1a2236;--border:#1e2d45;
+    --accent:#00d4ff;--purple:#7c3aed;--warn:#f59e0b;--danger:#ef4444;
+    --success:#10b981;--text:#e2e8f0;--text2:#94a3b8;--text3:#475569;
+    --mono:'IBM Plex Mono',monospace;--sans:'IBM Plex Sans',sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:100vh;font-size:14px}
+
+  .header{border-bottom:1px solid var(--border);padding:14px 28px;display:flex;align-items:center;justify-content:space-between;background:var(--surface);position:sticky;top:0;z-index:100}
+  .logo{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--accent);letter-spacing:.1em;text-transform:uppercase}
+  .dv{width:1px;height:16px;background:var(--border);margin:0 14px}
+  .header-title{font-size:13px;color:var(--text2)}
+  .header-right{display:flex;align-items:center;gap:10px}
+  .ts{font-family:var(--mono);font-size:11px;color:var(--text3)}
+  .btn{padding:6px 14px;border-radius:4px;font-size:12px;font-family:var(--sans);cursor:pointer;display:flex;align-items:center;gap:6px;transition:all .15s;border:1px solid var(--border);background:var(--surface2);color:var(--text2)}
+  .btn:hover{border-color:var(--accent);color:var(--accent)}
+
+  .config-bar{background:var(--surface2);border-bottom:1px solid var(--border);padding:10px 28px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .cfg{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--text2)}
+  .cfg label{color:var(--text3);white-space:nowrap}
+  .cfg select{background:var(--surface);border:1px solid var(--border);color:var(--text);padding:4px 8px;border-radius:3px;font-size:12px;font-family:var(--mono)}
+  .api-row{margin-left:auto;display:flex;align-items:center;gap:12px;font-size:11px;font-family:var(--mono);color:var(--text3)}
+  .dot{width:6px;height:6px;border-radius:50%;background:var(--text3);display:inline-block;margin-right:4px}
+  .dot.ok{background:var(--success)}.dot.err{background:var(--danger)}.dot.spin{background:var(--warn);animation:pulse 1s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+  .main{padding:22px 28px;max-width:1560px}
+
+  .alert-banner{display:none;background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.3);border-radius:6px;padding:12px 16px;margin-bottom:18px;font-size:13px;color:#fca5a5;line-height:1.7}
+  .alert-banner.show{display:block}
+
+  .new-ticker-box{background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.2);border-radius:6px;padding:12px 14px;margin-bottom:18px;display:none}
+  .new-ticker-box.show{display:block}
+  .new-ticker-box h4{font-size:11px;font-family:var(--mono);color:var(--warn);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px}
+  .new-ticker-list{display:flex;flex-wrap:wrap;gap:6px}
+  .new-ticker-item{background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.25);border-radius:3px;padding:3px 8px;font-family:var(--mono);font-size:11px;color:var(--warn)}
+
+  .stats-row{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:20px}
+  .sc{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:13px 14px}
+  .sc-label{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:7px;font-family:var(--mono)}
+  .sc-val{font-family:var(--mono);font-size:22px;font-weight:600}
+  .sc-sub{font-size:11px;color:var(--text3);margin-top:3px}
+  .cv{color:var(--text)}.cv-w{color:var(--warn)}.cv-d{color:var(--danger)}.cv-g{color:var(--success)}
+
+  .legend{display:flex;align-items:center;gap:14px;margin-bottom:14px;font-size:11px;color:var(--text3);font-family:var(--mono);flex-wrap:wrap}
+  .leg-item{display:flex;align-items:center;gap:5px}
+  .leg-sq{width:10px;height:10px;border-radius:2px}
+
+  .filters{display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+  .fb{background:var(--surface);border:1px solid var(--border);color:var(--text2);padding:4px 12px;border-radius:20px;font-size:12px;cursor:pointer;transition:all .15s;font-family:var(--sans)}
+  .fb:hover,.fb.active{border-color:var(--accent);color:var(--accent);background:rgba(0,212,255,.06)}
+  .fb.active{font-weight:500}
+  .si{background:var(--surface);border:1px solid var(--border);color:var(--text);padding:4px 10px;border-radius:4px;font-size:12px;font-family:var(--mono);width:130px}
+  .si:focus{outline:none;border-color:var(--accent)}
+
+  .tw{background:var(--surface);border:1px solid var(--border);border-radius:6px;overflow:hidden;overflow-x:auto}
+  table{width:100%;border-collapse:collapse;min-width:1100px}
+  thead tr{background:var(--surface2);border-bottom:1px solid var(--border)}
+  th{padding:9px 12px;text-align:left;font-size:10px;font-weight:500;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;font-family:var(--mono);white-space:nowrap;cursor:pointer;user-select:none}
+  th:hover{color:var(--text2)} th.sorted{color:var(--accent)}
+  tbody tr{border-bottom:1px solid rgba(30,45,69,.5);transition:background .1s}
+  tbody tr:last-child{border-bottom:none}
+  tbody tr:hover{background:var(--surface2)}
+  tbody tr.row-conflict{background:rgba(239,68,68,.04)}
+  tbody tr.row-conflict:hover{background:rgba(239,68,68,.08)}
+  tbody tr.row-new{background:rgba(245,158,11,.03)}
+  td{padding:10px 12px;font-size:13px;vertical-align:middle}
+
+  .ticker-cell{font-family:var(--mono);font-weight:600;font-size:13px;color:var(--accent)}
+  .new-badge{display:inline-block;padding:1px 5px;border-radius:2px;font-size:9px;font-family:var(--mono);background:rgba(245,158,11,.15);color:var(--warn);border:1px solid rgba(245,158,11,.3);margin-left:4px;vertical-align:middle}
+  .ev-badge{display:inline-flex;align-items:center;gap:4px;padding:3px 7px;border-radius:3px;font-size:11px;font-weight:500;font-family:var(--mono);white-space:nowrap}
+  .bd-cash{background:rgba(16,185,129,.1);color:#10b981;border:1px solid rgba(16,185,129,.2)}
+  .bd-stock{background:rgba(124,58,237,.1);color:#a78bfa;border:1px solid rgba(124,58,237,.2)}
+  .bd-split{background:rgba(0,212,255,.08);color:#00d4ff;border:1px solid rgba(0,212,255,.18)}
+  .bd-rsplit{background:rgba(239,68,68,.1);color:#ef4444;border:1px solid rgba(239,68,68,.2)}
+  .bd-special{background:rgba(245,158,11,.1);color:#f59e0b;border:1px solid rgba(245,158,11,.2)}
+  .bd-sec{background:rgba(16,185,129,.05);color:#6ee7b7;border:1px solid rgba(16,185,129,.15)}
+
+  .conf-badge{padding:2px 7px;border-radius:3px;font-size:10px;font-weight:600;font-family:var(--mono);white-space:nowrap;display:inline-block}
+  .conf-3{background:rgba(16,185,129,.12);color:var(--success);border:1px solid rgba(16,185,129,.25)}
+  .conf-2{background:rgba(0,212,255,.08);color:var(--accent);border:1px solid rgba(0,212,255,.2)}
+  .conf-1{background:rgba(245,158,11,.1);color:var(--warn);border:1px solid rgba(245,158,11,.25)}
+  .conf-conflict{background:rgba(239,68,68,.1);color:var(--danger);border:1px solid rgba(239,68,68,.25);animation:flash 2s infinite}
+  @keyframes flash{0%,100%{opacity:1}50%{opacity:.55}}
+
+  .dc{font-family:var(--mono);font-size:12px;color:var(--text2)}
+  .dc-u{color:var(--danger)!important;font-weight:600} .dc-s{color:var(--warn)!important;font-weight:500}
+  .db{display:inline-block;padding:2px 6px;border-radius:3px;font-size:11px;font-family:var(--mono);font-weight:600}
+  .db-u{background:rgba(239,68,68,.12);color:var(--danger)}
+  .db-s{background:rgba(245,158,11,.1);color:var(--warn)}
+  .db-o{background:rgba(30,45,69,.8);color:var(--text3)}
+  .amt{font-family:var(--mono);font-size:13px;font-weight:500}
+  .ratio-v{color:var(--accent)}
+  .src-tag{display:inline-block;padding:1px 5px;border-radius:2px;font-size:10px;font-family:var(--mono);margin-right:2px}
+  .src-poly{background:rgba(0,212,255,.1);color:var(--accent);border:1px solid rgba(0,212,255,.2)}
+  .src-fmp{background:rgba(124,58,237,.1);color:#a78bfa;border:1px solid rgba(124,58,237,.2)}
+  .src-sec{background:rgba(16,185,129,.08);color:#6ee7b7;border:1px solid rgba(16,185,129,.2)}
+  .diff-warn{font-size:10px;color:var(--danger);font-family:var(--mono);display:block;margin-top:3px}
+
+  .ac{display:flex;gap:5px}
+  .mb{background:transparent;border:1px solid var(--border);color:var(--text3);padding:3px 8px;border-radius:3px;font-size:11px;cursor:pointer;transition:all .15s;font-family:var(--sans)}
+  .mb:hover{border-color:var(--accent);color:var(--accent)}
+  .nd{text-align:center;padding:50px 20px;color:var(--text3);font-size:13px;line-height:1.8}
+  .lr td{padding:36px;text-align:center;color:var(--text3);font-family:var(--mono);font-size:12px}
+  .sp{display:inline-block;width:12px;height:12px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;vertical-align:middle}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  .tg-section{margin-top:20px}
+  .tg-title{font-size:11px;font-weight:500;color:var(--text3);text-transform:uppercase;letter-spacing:.09em;font-family:var(--mono);margin-bottom:10px}
+  .tg{display:flex;flex-wrap:wrap;gap:6px}
+  .tc{background:var(--surface);border:1px solid var(--border);border-radius:3px;padding:4px 10px;font-family:var(--mono);font-size:12px;color:var(--text2);cursor:pointer;transition:all .15s}
+  .tc:hover{border-color:var(--accent);color:var(--accent)}
+  .tc.ev{border-color:var(--warn);color:var(--warn)}
+  .tc.urg{border-color:var(--danger);color:var(--danger)}
+  .tc.conflict{border-color:var(--danger);color:var(--danger);animation:flash 2s infinite}
+  .tc.new-stock{border-style:dashed;border-color:rgba(245,158,11,.5);color:rgba(245,158,11,.7)}
+  .cdot{display:inline-block;width:5px;height:5px;border-radius:50%;margin-right:4px;vertical-align:middle}
+
+  .mo{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:200;align-items:center;justify-content:center}
+  .mo.open{display:flex}
+  .modal{background:var(--surface);border:1px solid var(--border);border-radius:8px;width:580px;max-width:95vw;max-height:92vh;overflow-y:auto}
+  .mh{padding:15px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+  .mt{font-size:14px;font-weight:600;font-family:var(--mono);color:var(--accent)}
+  .mc{background:none;border:none;color:var(--text3);font-size:20px;cursor:pointer;line-height:1}
+  .mc:hover{color:var(--text)}
+  .mb2{padding:20px}
+  .dg{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-bottom:14px}
+  .di label{display:block;font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;font-family:var(--mono);margin-bottom:4px}
+  .di .v{font-family:var(--mono);font-size:13px;font-weight:500;color:var(--text)}
+  .di .v.hl{color:var(--accent);font-size:15px;font-weight:600}
+  .di .v.warn-v{color:var(--danger)}
+  .conflict-box{background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.25);border-radius:6px;padding:13px;margin-bottom:13px}
+  .conflict-box .ct{font-size:11px;font-family:var(--mono);color:var(--danger);margin-bottom:8px;font-weight:600}
+  .conflict-row{display:flex;justify-content:space-between;font-size:12px;font-family:var(--mono);padding:4px 0;border-bottom:1px solid rgba(239,68,68,.1)}
+  .conflict-row:last-child{border-bottom:none}
+  .manual-box{background:rgba(30,45,69,.5);border:1px solid var(--border);border-radius:6px;padding:13px;margin-top:12px}
+  .manual-box.warn-box{background:rgba(245,158,11,.05);border:1px dashed rgba(245,158,11,.3)}
+  .manual-box-title{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;font-family:var(--mono);margin-bottom:8px}
+  .manual-links{display:flex;flex-direction:column;gap:6px}
+  .manual-link{color:var(--accent);font-size:12px;font-family:var(--mono);text-decoration:none}
+  .manual-link:hover{text-decoration:underline}
+  .coeff-box{background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:13px;margin-top:12px}
+  .coeff-label{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;font-family:var(--mono);margin-bottom:8px}
+  .coeff-formula{font-family:var(--mono);font-size:12px;color:var(--warn);background:rgba(245,158,11,.05);padding:10px 12px;border-radius:4px;border-left:3px solid var(--warn);margin-bottom:8px;line-height:1.7;white-space:pre-wrap}
+  .coeff-note{font-size:11px;color:var(--text3);line-height:1.6}
+  .ma{display:flex;gap:8px;margin-top:14px;padding-top:14px;border-top:1px solid var(--border)}
+  .bs{background:transparent;border:1px solid var(--border);color:var(--text2);padding:8px 16px;border-radius:4px;font-size:13px;cursor:pointer;font-family:var(--sans);transition:all .15s;width:100%}
+  .bs:hover{border-color:var(--text2)}
+
+  .toast{position:fixed;bottom:22px;right:22px;background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:11px 15px;font-size:13px;z-index:999;transform:translateY(70px);opacity:0;transition:all .25s;max-width:320px}
+  .toast.show{transform:translateY(0);opacity:1}
+  .toast.error{border-color:var(--danger);color:var(--danger)}
+
+  @media(max-width:900px){.stats-row{grid-template-columns:repeat(3,1fr)}.main{padding:14px}}
+  @media(max-width:600px){.stats-row{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div style="display:flex;align-items:center">
+    <span class="logo">RWA · CA Monitor</span>
+    <div class="dv"></div>
+    <span class="header-title">公司行动监控 · 三源交叉验证</span>
+  </div>
+  <div class="header-right">
+    <span class="ts" id="ts">加载中...</span>
+    <button class="btn" onclick="loadData()">↻ 刷新</button>
+  </div>
+</div>
+
+<div class="config-bar">
+  <div class="cfg"><label>预警天数</label>
+    <select id="alertDays" onchange="applyF()">
+      <option value="3">3天</option><option value="7" selected>7天</option>
+      <option value="14">14天</option><option value="30">30天</option>
+    </select>
+  </div>
+  <div class="cfg"><label>数据范围</label>
+    <select id="dateRange" onchange="applyF()">
+      <option value="30" selected>未来30天</option>
+      <option value="60">60天</option><option value="90">90天</option>
+    </select>
+  </div>
+  <div class="api-row">
+    <span id="dataStatus"><span class="dot spin"></span>加载中...</span>
+    <span style="color:var(--border)">|</span>
+    <span>数据源：Polygon · FMP · SEC EDGAR · 新闻稿链接</span>
+    <span style="color:var(--border)">|</span>
+    <span>每日 08:30 / 21:30 CST 自动更新</span>
+  </div>
+</div>
+
+<div class="main">
+  <div class="alert-banner" id="alertBanner"></div>
+  <div class="new-ticker-box" id="newTickerBox">
+    <h4>⚠ 以下标的为新上市股票，API可能尚未收录，请人工复核</h4>
+    <div class="new-ticker-list" id="newTickerList"></div>
+  </div>
+
+  <div class="stats-row">
+    <div class="sc"><div class="sc-label">监控标的</div><div class="sc-val cv" id="sTotal">—</div><div class="sc-sub">美股代币化</div></div>
+    <div class="sc"><div class="sc-label">🔴 数据冲突</div><div class="sc-val cv-d" id="sConflict">—</div><div class="sc-sub">需人工核查</div></div>
+    <div class="sc"><div class="sc-label">🟡 单源未确认</div><div class="sc-val cv-w" id="sSingle">—</div><div class="sc-sub">需关注</div></div>
+    <div class="sc"><div class="sc-label">✅ 多源确认</div><div class="sc-val cv-g" id="sConfirmed">—</div><div class="sc-sub">可信度高</div></div>
+    <div class="sc"><div class="sc-label">7天内Ex-Date</div><div class="sc-val cv-w" id="sUrgent">—</div><div class="sc-sub">立即关注</div></div>
+    <div class="sc"><div class="sc-label">总事件数</div><div class="sc-val cv" id="sAll">—</div><div class="sc-sub">当前范围</div></div>
+  </div>
+
+  <div class="legend">
+    <span>可信度：</span>
+    <span class="leg-item"><span class="leg-sq" style="background:var(--success)"></span>3源确认</span>
+    <span class="leg-item"><span class="leg-sq" style="background:var(--accent)"></span>2源确认</span>
+    <span class="leg-item"><span class="leg-sq" style="background:var(--warn)"></span>单源</span>
+    <span class="leg-item"><span class="leg-sq" style="background:var(--danger)"></span>数据冲突</span>
+    <span class="leg-item"><span class="leg-sq" style="background:transparent;border:1px dashed var(--warn)"></span>新上市</span>
+  </div>
+
+  <div class="filters">
+    <span style="font-size:11px;color:var(--text3);font-family:var(--mono)">筛选：</span>
+    <button class="fb active" onclick="setF('all',this)">全部</button>
+    <button class="fb" onclick="setF('CASH',this)">现金分红</button>
+    <button class="fb" onclick="setF('STOCK',this)">股票分红</button>
+    <button class="fb" onclick="setF('SPLIT',this)">拆股</button>
+    <button class="fb" onclick="setF('REVERSE_SPLIT',this)">合股</button>
+    <button class="fb" onclick="setF('SPECIAL',this)">特别分红</button>
+    <button class="fb" onclick="setF('urgent',this)" style="border-color:rgba(239,68,68,.4);color:var(--danger)">⚠ 7天内</button>
+    <button class="fb" onclick="setF('conflict',this)" style="border-color:rgba(239,68,68,.4);color:var(--danger)">🔴 冲突</button>
+    <button class="fb" onclick="setF('single',this)" style="border-color:rgba(245,158,11,.4);color:var(--warn)">🟡 单源</button>
+    <input type="text" class="si" placeholder="搜索代码..." id="si" oninput="applyF()">
+  </div>
+
+  <div class="tw">
+    <table>
+      <thead><tr>
+        <th onclick="srt('ticker')">代码</th>
+        <th onclick="srt('type')">事件类型</th>
+        <th>可信度</th>
+        <th onclick="srt('exDate')">Ex-Date</th>
+        <th onclick="srt('daysLeft')">距今</th>
+        <th>宣告日</th><th>登记日</th><th>付款日</th>
+        <th>金额/比例</th>
+        <th>数据来源</th>
+        <th>系数调整提示</th>
+        <th>详情</th>
+      </tr></thead>
+      <tbody id="tb">
+        <tr class="lr"><td colspan="12"><div class="sp"></div>&nbsp; 正在加载数据...</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="tg-section">
+    <div class="tg-title">标的状态总览</div>
+    <div class="tg" id="tg"></div>
+  </div>
+</div>
+
+<div class="mo" id="mo"><div class="modal">
+  <div class="mh"><span class="mt" id="moTitle">—</span><button class="mc" onclick="closeMo()">×</button></div>
+  <div class="mb2" id="moBody"></div>
+</div></div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+let allEvents = [], filtered = [], curFilter = 'all', curSort = {k:'daysLeft',d:1};
+
+// ── 加载 data.json ──────────────────────────────────
+async function loadData() {
+  document.getElementById('dataStatus').innerHTML = '<span class="dot spin"></span>加载中...';
+  try {
+    const r = await fetch('data.json?t=' + Date.now());
+    if (!r.ok) throw new Error('data.json 不存在，请先运行 GitHub Actions');
+    const data = await r.json();
+
+    allEvents = (data.events || []);
+
+    // 按当前日期重新计算 daysLeft
+    const today = new Date(); today.setHours(0,0,0,0);
+    allEvents.forEach(ev => {
+      const d = new Date(ev.exDate);
+      ev.daysLeft = Math.round((d - today) / 86400000);
+    });
+
+    document.getElementById('ts').textContent = '数据时间：' + (data.updatedAtCST || '—');
+    document.getElementById('dataStatus').innerHTML = '<span class="dot ok"></span>数据已加载';
+    document.getElementById('sTotal').textContent = data.totalTickers || '—';
+
+    updateStats(data.stats);
+    checkAlertBanner(data.alerts);
+    showNewTickerWarning(data.alerts?.newTickers || []);
+    applyF();
+    renderTG(data.events || []);
+  } catch(e) {
+    document.getElementById('dataStatus').innerHTML = '<span class="dot err"></span>' + e.message;
+    document.getElementById('tb').innerHTML = `<tr class="lr"><td colspan="12">⚠ ${e.message}<br><span style="font-size:11px;color:var(--text3)">请确认 GitHub Actions 已成功运行并生成 data.json</span></td></tr>`;
+    showToast(e.message, 'error');
+  }
+}
+
+// ── 渲染 ────────────────────────────────────────────
+function applyF() {
+  const search = document.getElementById('si').value.toUpperCase();
+  const alertDays = parseInt(document.getElementById('alertDays').value);
+  const rangeDays = parseInt(document.getElementById('dateRange').value);
+  filtered = allEvents.filter(ev => {
+    if (ev.daysLeft > rangeDays || ev.daysLeft < 0) return false;
+    if (search && !ev.ticker.includes(search)) return false;
+    if (curFilter === 'all') return true;
+    if (curFilter === 'urgent') return ev.daysLeft <= alertDays;
+    if (curFilter === 'conflict') return ev.confidence === 'conflict';
+    if (curFilter === 'single') return ev.confidence === 'single';
+    return ev.type === curFilter;
+  });
+  sortEvs(); renderTable();
+}
+
+function sortEvs() {
+  filtered.sort((a,b) => {
+    let va = a[curSort.k], vb = b[curSort.k];
+    if (typeof va === 'string') return va.localeCompare(vb) * curSort.d;
+    return ((va??9999) - (vb??9999)) * curSort.d;
+  });
+}
+
+function srt(k) {
+  if (curSort.k===k) curSort.d*=-1; else {curSort.k=k; curSort.d=1;}
+  applyF();
+}
+
+function setF(f, btn) {
+  curFilter = f;
+  document.querySelectorAll('.fb').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  applyF();
+}
+
+function renderTable() {
+  const tb = document.getElementById('tb');
+  if (!filtered.length) {
+    tb.innerHTML = `<tr><td colspan="12"><div class="nd">当前筛选条件下暂无事件</div></td></tr>`;
+    return;
+  }
+  tb.innerHTML = filtered.map((ev, i) => {
+    const idx = allEvents.indexOf(ev);
+    const dCls = ev.daysLeft<=2?'dc-u':ev.daysLeft<=7?'dc-s':'';
+    const dBCls = ev.daysLeft<=2?'db-u':ev.daysLeft<=7?'db-s':'db-o';
+    const dTxt = ev.daysLeft===0?'今天':ev.daysLeft===1?'明天':`${ev.daysLeft}天`;
+    const bdCls = {CASH:'bd-cash',STOCK:'bd-stock',SPLIT:'bd-split',REVERSE_SPLIT:'bd-rsplit',SPECIAL:'bd-special',SEC_FILING:'bd-sec'}[ev.type]||'bd-cash';
+    const icon = {CASH:'💰',STOCK:'📊',SPLIT:'✂️',REVERSE_SPLIT:'🔀',SPECIAL:'⭐',SEC_FILING:'📄'}[ev.type]||'•';
+    const conf = confHtml(ev.confidence);
+    const diffHtml = ev.conflicts?.length ? `<span class="diff-warn">⚠ ${ev.conflicts.map(c=>c.field+'不一致').join('/')}</span>` : '';
+    const srcHtml = [ev.sourcePoly?'<span class="src-tag src-poly">Polygon</span>':'', ev.sourceFmp?'<span class="src-tag src-fmp">FMP</span>':'', ev.sourceSec?'<span class="src-tag src-sec">SEC</span>':''].filter(Boolean).join('');
+    const amtHtml = ev.ratio ? `<span class="amt ratio-v">${ev.ratio}</span>` : ev.cashAmount ? `<span class="amt">$${ev.cashAmount}</span>` : '<span style="color:var(--text3)">—</span>';
+    const newBadge = ev.isNewTicker ? '<span class="new-badge">新上市</span>' : '';
+    const rowCls = ev.confidence==='conflict'?'row-conflict':ev.isNewTicker?'row-new':'';
+    return `<tr class="${rowCls}">
+      <td class="ticker-cell">${ev.ticker}${newBadge}</td>
+      <td><span class="ev-badge ${bdCls}">${icon} ${ev.typeLabel}</span></td>
+      <td>${conf}${diffHtml}</td>
+      <td class="dc ${dCls}">${ev.exDate}</td>
+      <td><span class="db ${dBCls}">${dTxt}</span></td>
+      <td class="dc">${ev.declarationDate||'—'}</td>
+      <td class="dc">${ev.recordDate||'—'}</td>
+      <td class="dc">${ev.payDate||'—'}</td>
+      <td>${amtHtml}</td>
+      <td>${srcHtml}</td>
+      <td style="font-size:11px;color:var(--text3);max-width:130px;line-height:1.4">${coeffHint(ev)}</td>
+      <td><button class="mb" onclick="openMo(${idx})">详情</button></td>
+    </tr>`;
+  }).join('');
+}
+
+function confHtml(c) {
+  const m = {confirmed_3:['conf-3','✅ 3源'],confirmed_2:['conf-2','✅ 2源'],single:['conf-1','🟡 单源'],conflict:['conf-conflict','🔴 冲突']};
+  const [cls, label] = m[c]||['conf-1','—'];
+  return `<span class="conf-badge ${cls}">${label}</span>`;
+}
+
+function coeffHint(ev) {
+  if (ev.type==='SPLIT'&&ev.splitTo&&ev.splitFrom) return `系数÷${(ev.splitTo/ev.splitFrom).toFixed(4)} (${ev.ratio})`;
+  if (ev.type==='REVERSE_SPLIT'&&ev.splitTo&&ev.splitFrom) return `系数×${(ev.splitFrom/ev.splitTo).toFixed(4)} (${ev.ratio})`;
+  if (ev.type==='CASH'||ev.type==='SPECIAL') return '现金分红，系数不变';
+  if (ev.type==='STOCK') return '待确认比例后调系数';
+  if (ev.type==='SEC_FILING') return '⚠ 请阅读公告原文';
+  return '—';
+}
+
+// ── 统计 / 预警 ──────────────────────────────────────
+function updateStats(stats) {
+  if (!stats) return;
+  document.getElementById('sConflict').textContent = stats.conflict || '0';
+  document.getElementById('sSingle').textContent   = stats.single || '0';
+  document.getElementById('sConfirmed').textContent = (stats.confirmed3||0) + (stats.confirmed2||0);
+  document.getElementById('sUrgent').textContent   = stats.urgent7d || '0';
+  document.getElementById('sAll').textContent      = stats.total || '0';
+}
+
+function checkAlertBanner(alerts) {
+  if (!alerts) return;
+  const msgs = [];
+  if (alerts.conflicts?.length) msgs.push(`🔴 ${alerts.conflicts.length} 个事件两源数据冲突（${alerts.conflicts.map(e=>e.ticker).join('、')}）—— 禁止直接调整系数，请人工核查！`);
+  if (alerts.urgent?.length) msgs.push(`⚠️ ${alerts.urgent.length} 个事件 Ex-Date 在7天内（${alerts.urgent.map(e=>e.ticker+'·'+e.exDate).join('、')}）—— 立即处理！`);
+  const banner = document.getElementById('alertBanner');
+  if (msgs.length) { banner.innerHTML = msgs.join('<br>'); banner.classList.add('show'); }
+}
+
+function showNewTickerWarning(newTickers) {
+  if (!newTickers?.length) return;
+  const seen = [...new Set(newTickers.map(e=>e.ticker))];
+  document.getElementById('newTickerList').innerHTML = seen.map(t =>
+    `<div class="new-ticker-item" title="${newTickers.find(e=>e.ticker===t)?.ipoNote||''}">${t}</div>`
+  ).join('');
+  document.getElementById('newTickerBox').classList.add('show');
+}
+
+function renderTG(events) {
+  const conflictT = new Set(events.filter(e=>e.confidence==='conflict').map(e=>e.ticker));
+  const urgentT   = new Set(events.filter(e=>e.daysLeft>=0&&e.daysLeft<=3).map(e=>e.ticker));
+  const eventT    = new Set(events.map(e=>e.ticker));
+  const newT      = new Set(events.filter(e=>e.isNewTicker).map(e=>e.ticker));
+  const ALL = ["MU","SNDK","NVDA","TSLA","AMD","INTC","MSFT","AAPL","AMZN","GOOGL","META","AVGO","MRVL","PLTR","ORCL","LLY","NBIS","HOOD","CRWV","RKLB","MSTR","CRCL","HIMS","SPCX"];
+  document.getElementById('tg').innerHTML = ALL.map(t => {
+    const cls = conflictT.has(t)?'conflict':urgentT.has(t)?'urg':eventT.has(t)?'ev':newT.has(t)?'new-stock':'';
+    const dot = conflictT.has(t)||urgentT.has(t)?`<span class="cdot" style="background:var(--danger)"></span>`:
+                eventT.has(t)?`<span class="cdot" style="background:var(--warn)"></span>`:
+                newT.has(t)?`<span class="cdot" style="background:rgba(245,158,11,.5)"></span>`:'';
+    return `<div class="tc ${cls}" onclick="filterTicker('${t}')">${dot}${t}${newT.has(t)?'*':''}</div>`;
+  }).join('');
+}
+
+function filterTicker(t) { document.getElementById('si').value=t; applyF(); }
+
+// ── 详情弹窗 ──────────────────────────────────────────
+function openMo(idx) {
+  const ev = allEvents[idx];
+  document.getElementById('moTitle').textContent = `${ev.ticker} · ${ev.typeLabel}`;
+  const cd = getCoeffDetail(ev);
+
+  const conflictBlock = ev.conflicts?.length ? `
+    <div class="conflict-box">
+      <div class="ct">🔴 两源数据冲突 — 严禁直接操作系数，请人工核查！</div>
+      ${ev.conflicts.map(c=>`<div class="conflict-row"><span style="color:var(--text2)">${c.field}</span><span><span class="src-tag src-poly">Polygon</span>${c.poly} vs <span class="src-tag src-fmp">FMP</span>${c.fmp}</span></div>`).join('')}
+    </div>` : '';
+
+  const newBlock = ev.isNewTicker ? `
+    <div class="manual-box warn-box">
+      <div class="manual-box-title" style="color:var(--warn)">⚠ 新上市标的 — ${ev.ipoNote||'API数据可能不完整'}</div>
+      <div class="manual-links">
+        <a class="manual-link" href="https://www.businesswire.com/news/home/search?rq=${ev.ticker}" target="_blank">📰 BusinessWire — ${ev.ticker}（最快）</a>
+        <a class="manual-link" href="https://www.globenewswire.com/search/keyword/${ev.ticker}" target="_blank">📰 GlobeNewswire — ${ev.ticker}</a>
+        <a class="manual-link" href="https://www.nasdaq.com/market-activity/stocks/${ev.ticker.toLowerCase()}/dividend-history" target="_blank">📊 Nasdaq 分红记录</a>
+        <a class="manual-link" href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&ticker=${ev.ticker}&type=8-K&dateb=&owner=include&count=10" target="_blank">📄 SEC EDGAR 8-K（备用）</a>
+      </div>
+    </div>` : '';
+
+  document.getElementById('moBody').innerHTML = `
+    <div style="margin-bottom:12px">${confHtml(ev.confidence)}${ev.isNewTicker?'<span class="new-badge" style="font-size:10px;margin-left:6px">新上市</span>':''}</div>
+    ${conflictBlock}${newBlock}
+    <div class="dg">
+      <div class="di"><label>标的代码</label><div class="v hl">${ev.ticker}</div></div>
+      <div class="di"><label>事件类型</label><div class="v">${ev.typeLabel}</div></div>
+      <div class="di"><label>Ex-Date（除权除息日）</label><div class="v hl ${ev.daysLeft<=2?'warn-v':''}">${ev.exDate}</div></div>
+      <div class="di"><label>距今</label><div class="v">${ev.daysLeft===0?'⚠ 今天':ev.daysLeft===1?'明天':ev.daysLeft+'天后'}</div></div>
+      <div class="di"><label>宣告日</label><div class="v">${ev.declarationDate||'—'}</div></div>
+      <div class="di"><label>登记日</label><div class="v">${ev.recordDate||'—'}</div></div>
+      <div class="di"><label>付款日</label><div class="v">${ev.payDate||'—'}</div></div>
+      <div class="di"><label>${ev.ratio?'拆合股比例':'每股金额'}</label><div class="v hl">${ev.ratio||(ev.cashAmount?'$'+ev.cashAmount:'—')}</div></div>
+      <div class="di"><label>数据来源</label><div class="v" style="font-size:12px">${[ev.sourcePoly?'Polygon':'',ev.sourceFmp?'FMP':'',ev.sourceSec?'SEC EDGAR':''].filter(Boolean).join(' + ')||'—'}</div></div>
+      <div class="di"><label>可信度</label><div class="v" style="font-size:12px">${{confirmed_3:'✅ 最高（3源一致）',confirmed_2:'✅ 高（2源一致）',single:'🟡 中（单源）',conflict:'🔴 低（数据冲突）'}[ev.confidence]||'—'}</div></div>
+    </div>
+    <div class="coeff-box">
+      <div class="coeff-label">⚙ 系数调整指引</div>
+      <div class="coeff-formula">${cd.formula}</div>
+      <div class="coeff-note">${cd.note}</div>
+    </div>
+    <div class="manual-box">
+      <div class="manual-box-title">🔗 人工核查（信息速度：新闻稿 > Nasdaq > SEC）</div>
+      <div class="manual-links">
+        <a class="manual-link" href="https://www.businesswire.com/news/home/search?rq=${ev.ticker}" target="_blank">📰 BusinessWire — ${ev.ticker}（最快，公告第一手）</a>
+        <a class="manual-link" href="https://www.globenewswire.com/search/keyword/${ev.ticker}" target="_blank">📰 GlobeNewswire — ${ev.ticker}</a>
+        <a class="manual-link" href="https://www.prnewswire.com/news-releases/news-releases-list.html?Companies=${ev.ticker}" target="_blank">📰 PR Newswire — ${ev.ticker}</a>
+        <a class="manual-link" href="https://www.nasdaq.com/market-activity/stocks/${ev.ticker.toLowerCase()}/dividend-history" target="_blank">📊 Nasdaq 官方分红记录</a>
+        <a class="manual-link" href="https://finance.yahoo.com/quote/${ev.ticker}/news/" target="_blank">📊 Yahoo Finance 新闻</a>
+        <a class="manual-link" href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&ticker=${ev.ticker}&type=8-K&dateb=&owner=include&count=10" target="_blank">📄 SEC EDGAR 8-K（备用）</a>
+      </div>
+    </div>
+    <div class="ma"><button class="bs" onclick="closeMo()">关闭</button></div>`;
+  document.getElementById('mo').classList.add('open');
+}
+
+function closeMo() { document.getElementById('mo').classList.remove('open'); }
+
+function getCoeffDetail(ev) {
+  if (ev.type==='SPLIT'&&ev.splitTo&&ev.splitFrom) {
+    const r = ev.splitTo/ev.splitFrom;
+    return {formula:`拆股比例：${ev.ratio}\n新系数 = 当前系数 ÷ ${r}\n\n例：系数 1.0000 → ${r.toFixed(4)}\n（每代币从1股变为${r}股）`, note:`在 Ex-Date ${ev.exDate} 美东开盘前完成调整。`};
+  }
+  if (ev.type==='REVERSE_SPLIT'&&ev.splitTo&&ev.splitFrom) {
+    const r = ev.splitFrom/ev.splitTo;
+    return {formula:`合股比例：${ev.ratio}\n新系数 = 当前系数 ÷ ${ev.splitTo/ev.splitFrom}\n\n例：系数 1.0000 → ${(1/r).toFixed(4)}\n（每代币从1股变为${(1/r).toFixed(4)}股）`, note:`在 Ex-Date ${ev.exDate} 美东开盘前完成调整。`};
+  }
+  if (ev.type==='CASH'||ev.type==='SPECIAL') {
+    return {formula:`每股分红金额：${ev.cashAmount?'$'+ev.cashAmount:'待确认'}\n\n现金分红不调整代币系数\n需按持仓比例向代币持有人分配现金`, note:`Ex-Date ${ev.exDate} 收盘持有代币者有权获得分红，付款日 ${ev.payDate||'—'} 前完成分配。`};
+  }
+  if (ev.type==='STOCK') return {formula:`股票分红需确认每股获得新股数量\n新系数 = 当前系数 ÷ (1 + 每股分红股数)\n\n请等待官方公告确认比例`, note:`Ex-Date ${ev.exDate}，以官方公告为准再调整。`};
+  if (ev.type==='SEC_FILING') return {formula:`此为 SEC 8-K 公告检测结果\n请点击下方链接阅读原文\n确认具体事件类型和数值后再操作`, note:`内容以 SEC 原始文件为准。`};
+  return {formula:'—', note:'—'};
+}
+
+function showToast(msg, type='') {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.className = 'toast '+type+' show';
+  setTimeout(()=>t.classList.remove('show'), 4000);
+}
+
+document.getElementById('mo').addEventListener('click', function(e){ if(e.target===this)closeMo(); });
+
+// 自动加载
+loadData();
+</script>
+</body>
+</html>
