@@ -1,58 +1,30 @@
 {
-  "updatedAt": "2026-06-15T18:20:37.490053+00:00",
-  "updatedAtCST": "2026-06-16 02:20 CST",
-  "dateFrom": "2026-06-15",
-  "dateTo": "2026-09-13",
+  "updatedAt": "2026-06-16T05:54:37.629986+00:00",
+  "updatedAtCST": "2026-06-16 13:54 CST",
+  "dateFrom": "2026-06-16",
+  "dateTo": "2026-09-14",
   "totalTickers": 30,
   "dataNote": "数据来源：Polygon（主）+ SEC EDGAR（新上市兜底）。FMP免费层不支持按ticker查询已禁用。",
   "stats": {
-    "total": 4,
+    "total": 3,
     "confirmed2": 0,
-    "single": 4,
+    "single": 3,
     "conflict": 0,
-    "urgent7d": 2
+    "urgent7d": 1
   },
   "alerts": {
     "conflicts": [],
     "urgent": [
       {
-        "ticker": "META",
-        "exDate": "2026-06-15",
-        "type": "现金分红",
-        "daysLeft": 0
-      },
-      {
         "ticker": "AVGO",
         "exDate": "2026-06-22",
         "type": "现金分红",
-        "daysLeft": 7
+        "daysLeft": 6
       }
     ],
     "newTickers": []
   },
   "events": [
-    {
-      "ticker": "META",
-      "exDate": "2026-06-15",
-      "type": "CASH",
-      "typeLabel": "现金分红",
-      "declarationDate": "2026-05-28",
-      "recordDate": "2026-06-15",
-      "payDate": "2026-06-25",
-      "cashAmount": 0.525,
-      "ratio": null,
-      "splitTo": null,
-      "splitFrom": null,
-      "confidence": "single",
-      "conflicts": [],
-      "sourcePoly": true,
-      "sourceFmp": false,
-      "sourceSec": false,
-      "secUrl": null,
-      "isNewTicker": false,
-      "ipoNote": "",
-      "daysLeft": 0
-    },
     {
       "ticker": "AVGO",
       "exDate": "2026-06-22",
@@ -73,7 +45,7 @@
       "secUrl": null,
       "isNewTicker": false,
       "ipoNote": "",
-      "daysLeft": 7
+      "daysLeft": 6
     },
     {
       "ticker": "ORCL",
@@ -95,7 +67,7 @@
       "secUrl": null,
       "isNewTicker": false,
       "ipoNote": "",
-      "daysLeft": 25
+      "daysLeft": 24
     },
     {
       "ticker": "MSFT",
@@ -117,7 +89,7 @@
       "secUrl": null,
       "isNewTicker": false,
       "ipoNote": "",
-      "daysLeft": 66
+      "daysLeft": 65
     }
   ],
   "tickerMeta": {
