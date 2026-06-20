@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-06-19T16:30:54.866540+00:00",
-  "updatedAtCST": "2026-06-20 00:30 CST",
-  "dateFrom": "2026-06-19",
-  "dateTo": "2026-09-17",
+  "updatedAt": "2026-06-20T05:00:36.574889+00:00",
+  "updatedAtCST": "2026-06-20 13:00 CST",
+  "dateFrom": "2026-06-20",
+  "dateTo": "2026-09-18",
   "totalTickers": 30,
   "dataNote": "数据来源：Polygon（主）+ SEC EDGAR（新上市兜底）。FMP免费层不支持按ticker查询已禁用。",
   "stats": {
@@ -19,13 +19,13 @@
         "ticker": "AVGO",
         "exDate": "2026-06-22",
         "type": "现金分红",
-        "daysLeft": 3
+        "daysLeft": 2
       },
       {
         "ticker": "QQQ",
         "exDate": "2026-06-22",
         "type": "现金分红",
-        "daysLeft": 3
+        "daysLeft": 2
       }
     ],
     "newTickers": []
@@ -51,7 +51,7 @@
       "secUrl": null,
       "isNewTicker": false,
       "ipoNote": "",
-      "daysLeft": 3
+      "daysLeft": 2
     },
     {
       "ticker": "QQQ",
@@ -73,7 +73,7 @@
       "secUrl": null,
       "isNewTicker": false,
       "ipoNote": "",
-      "daysLeft": 3
+      "daysLeft": 2
     },
     {
       "ticker": "ORCL",
@@ -95,7 +95,7 @@
       "secUrl": null,
       "isNewTicker": false,
       "ipoNote": "",
-      "daysLeft": 21
+      "daysLeft": 20
     },
     {
       "ticker": "MSFT",
@@ -117,7 +117,7 @@
       "secUrl": null,
       "isNewTicker": false,
       "ipoNote": "",
-      "daysLeft": 62
+      "daysLeft": 61
     }
   ],
   "tickerMeta": {
