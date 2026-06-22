@@ -1,16 +1,16 @@
 {
-  "updatedAt": "2026-06-22T05:50:55.957808+00:00",
-  "updatedAtCST": "2026-06-22 13:50 CST",
+  "updatedAt": "2026-06-22T18:15:50.634034+00:00",
+  "updatedAtCST": "2026-06-23 02:15 CST",
   "dateFrom": "2026-06-22",
   "dateTo": "2026-09-20",
   "totalTickers": 30,
   "dataNote": "数据来源：Polygon（主）+ SEC EDGAR（新上市兜底）。FMP免费层不支持按ticker查询已禁用。",
   "stats": {
-    "total": 4,
+    "total": 5,
     "confirmed2": 0,
-    "single": 4,
+    "single": 5,
     "conflict": 0,
-    "urgent7d": 2
+    "urgent7d": 3
   },
   "alerts": {
     "conflicts": [],
@@ -26,9 +26,20 @@
         "exDate": "2026-06-22",
         "type": "现金分红",
         "daysLeft": 0
+      },
+      {
+        "ticker": "SPCX",
+        "exDate": "2026-06-22",
+        "type": "SEC 8-K公告",
+        "daysLeft": 0
       }
     ],
-    "newTickers": []
+    "newTickers": [
+      {
+        "ticker": "SPCX",
+        "ipoNote": "2026年6月12日上市，API尚未收录，务必人工核查"
+      }
+    ]
   },
   "events": [
     {
@@ -73,6 +84,28 @@
       "secUrl": null,
       "isNewTicker": false,
       "ipoNote": "",
+      "daysLeft": 0
+    },
+    {
+      "ticker": "SPCX",
+      "exDate": "2026-06-22",
+      "type": "SEC_FILING",
+      "typeLabel": "SEC 8-K公告",
+      "declarationDate": "2026-06-22",
+      "recordDate": "—",
+      "payDate": "—",
+      "cashAmount": null,
+      "ratio": null,
+      "splitTo": null,
+      "splitFrom": null,
+      "confidence": "single",
+      "conflicts": [],
+      "sourcePoly": false,
+      "sourceFmp": false,
+      "sourceSec": false,
+      "secUrl": null,
+      "isNewTicker": true,
+      "ipoNote": "2026年6月12日上市，API尚未收录，务必人工核查",
       "daysLeft": 0
     },
     {
