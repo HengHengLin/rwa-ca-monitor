@@ -1,14 +1,14 @@
 {
-  "updatedAt": "2026-06-25T04:52:27.187288+00:00",
-  "updatedAtCST": "2026-06-25 12:52 CST",
+  "updatedAt": "2026-06-25T16:13:22.184049+00:00",
+  "updatedAtCST": "2026-06-26 00:13 CST",
   "dateFrom": "2026-06-25",
   "dateTo": "2026-09-23",
   "totalTickers": 30,
   "dataNote": "数据来源：Polygon（主）+ SEC EDGAR（新上市兜底）。FMP免费层不支持按ticker查询已禁用。",
   "stats": {
-    "total": 3,
+    "total": 4,
     "confirmed2": 0,
-    "single": 3,
+    "single": 4,
     "conflict": 0,
     "urgent7d": 0
   },
@@ -18,6 +18,28 @@
     "newTickers": []
   },
   "events": [
+    {
+      "ticker": "MU",
+      "exDate": "2026-07-06",
+      "type": "CASH",
+      "typeLabel": "现金分红",
+      "declarationDate": "2026-06-24",
+      "recordDate": "2026-07-06",
+      "payDate": "2026-07-21",
+      "cashAmount": 0.15,
+      "ratio": null,
+      "splitTo": null,
+      "splitFrom": null,
+      "confidence": "single",
+      "conflicts": [],
+      "sourcePoly": true,
+      "sourceFmp": false,
+      "sourceSec": false,
+      "secUrl": null,
+      "isNewTicker": false,
+      "ipoNote": "",
+      "daysLeft": 11
+    },
     {
       "ticker": "ORCL",
       "exDate": "2026-07-10",
