@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-06-26T15:50:30.807538+00:00",
-  "updatedAtCST": "2026-06-26 23:50 CST",
-  "dateFrom": "2026-06-26",
-  "dateTo": "2026-09-24",
+  "updatedAt": "2026-06-27T04:43:54.660521+00:00",
+  "updatedAtCST": "2026-06-27 12:43 CST",
+  "dateFrom": "2026-06-27",
+  "dateTo": "2026-09-25",
   "totalTickers": 30,
   "dataNote": "数据来源：Polygon（主）+ SEC EDGAR（新上市兜底）。FMP免费层不支持按ticker查询已禁用。",
   "stats": {
@@ -38,7 +38,7 @@
       "secUrl": null,
       "isNewTicker": false,
       "ipoNote": "",
-      "daysLeft": 10
+      "daysLeft": 9
     },
     {
       "ticker": "MRVL",
@@ -60,7 +60,7 @@
       "secUrl": null,
       "isNewTicker": false,
       "ipoNote": "",
-      "daysLeft": 14
+      "daysLeft": 13
     },
     {
       "ticker": "ORCL",
@@ -82,7 +82,7 @@
       "secUrl": null,
       "isNewTicker": false,
       "ipoNote": "",
-      "daysLeft": 14
+      "daysLeft": 13
     },
     {
       "ticker": "LLY",
@@ -104,7 +104,7 @@
       "secUrl": null,
       "isNewTicker": false,
       "ipoNote": "",
-      "daysLeft": 49
+      "daysLeft": 48
     },
     {
       "ticker": "MSFT",
@@ -126,7 +126,7 @@
       "secUrl": null,
       "isNewTicker": false,
       "ipoNote": "",
-      "daysLeft": 55
+      "daysLeft": 54
     }
   ],
   "tickerMeta": {
