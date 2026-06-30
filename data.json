@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-06-30T04:53:34.129684+00:00",
-  "updatedAtCST": "2026-06-30 12:53 CST",
+  "updatedAt": "2026-06-30T16:15:06.340327+00:00",
+  "updatedAtCST": "2026-07-01 00:15 CST",
   "dateFrom": "2026-06-30",
   "dateTo": "2026-09-28",
   "totalTickers": 30,
@@ -52,7 +52,7 @@
       "exDate": "2026-07-10",
       "type": "CASH",
       "typeLabel": "现金分红",
-      "declarationDate": "2026-06-25",
+      "declarationDate": "2026-06-24",
       "recordDate": "2026-07-10",
       "payDate": "2026-07-30",
       "cashAmount": 0.06,
