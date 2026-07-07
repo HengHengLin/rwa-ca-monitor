@@ -1,64 +1,36 @@
 {
-  "updatedAt": "2026-07-06T16:48:54.886820+00:00",
-  "updatedAtCST": "2026-07-07 00:48 CST",
-  "dateFrom": "2026-07-06",
-  "dateTo": "2026-10-04",
+  "updatedAt": "2026-07-07T04:42:51.856794+00:00",
+  "updatedAtCST": "2026-07-07 12:42 CST",
+  "dateFrom": "2026-07-07",
+  "dateTo": "2026-10-05",
   "totalTickers": 30,
   "dataNote": "数据来源：Polygon（主）+ SEC EDGAR（新上市兜底）。FMP免费层不支持按ticker查询已禁用。",
   "stats": {
-    "total": 5,
+    "total": 4,
     "confirmed2": 0,
-    "single": 5,
+    "single": 4,
     "conflict": 0,
-    "urgent7d": 3
+    "urgent7d": 2
   },
   "alerts": {
     "conflicts": [],
     "urgent": [
       {
-        "ticker": "MU",
-        "exDate": "2026-07-06",
-        "type": "现金分红",
-        "daysLeft": 0
-      },
-      {
         "ticker": "MRVL",
         "exDate": "2026-07-10",
         "type": "现金分红",
-        "daysLeft": 4
+        "daysLeft": 3
       },
       {
         "ticker": "ORCL",
         "exDate": "2026-07-10",
         "type": "现金分红",
-        "daysLeft": 4
+        "daysLeft": 3
       }
     ],
     "newTickers": []
   },
   "events": [
-    {
-      "ticker": "MU",
-      "exDate": "2026-07-06",
-      "type": "CASH",
-      "typeLabel": "现金分红",
-      "declarationDate": "2026-06-24",
-      "recordDate": "2026-07-06",
-      "payDate": "2026-07-21",
-      "cashAmount": 0.15,
-      "ratio": null,
-      "splitTo": null,
-      "splitFrom": null,
-      "confidence": "single",
-      "conflicts": [],
-      "sourcePoly": true,
-      "sourceFmp": false,
-      "sourceSec": false,
-      "secUrl": null,
-      "isNewTicker": false,
-      "ipoNote": "",
-      "daysLeft": 0
-    },
     {
       "ticker": "MRVL",
       "exDate": "2026-07-10",
@@ -79,7 +51,7 @@
       "secUrl": null,
       "isNewTicker": false,
       "ipoNote": "",
-      "daysLeft": 4
+      "daysLeft": 3
     },
     {
       "ticker": "ORCL",
@@ -101,7 +73,7 @@
       "secUrl": null,
       "isNewTicker": false,
       "ipoNote": "",
-      "daysLeft": 4
+      "daysLeft": 3
     },
     {
       "ticker": "LLY",
@@ -123,7 +95,7 @@
       "secUrl": null,
       "isNewTicker": false,
       "ipoNote": "",
-      "daysLeft": 39
+      "daysLeft": 38
     },
     {
       "ticker": "MSFT",
@@ -145,7 +117,7 @@
       "secUrl": null,
       "isNewTicker": false,
       "ipoNote": "",
-      "daysLeft": 45
+      "daysLeft": 44
     }
   ],
   "tickerMeta": {
