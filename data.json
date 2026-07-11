@@ -1,80 +1,23 @@
 {
-  "updatedAt": "2026-07-10T16:05:27.264074+00:00",
-  "updatedAtCST": "2026-07-11 00:05 CST",
-  "dateFrom": "2026-07-10",
-  "dateTo": "2026-10-08",
+  "updatedAt": "2026-07-11T04:02:16.776136+00:00",
+  "updatedAtCST": "2026-07-11 12:02 CST",
+  "dateFrom": "2026-07-11",
+  "dateTo": "2026-10-09",
   "totalTickers": 30,
   "dataNote": "数据来源：Polygon（主）+ SEC EDGAR（新上市兜底）。FMP免费层不支持按ticker查询已禁用。",
   "stats": {
-    "total": 4,
+    "total": 2,
     "confirmed2": 0,
-    "single": 4,
+    "single": 2,
     "conflict": 0,
-    "urgent7d": 2
+    "urgent7d": 0
   },
   "alerts": {
     "conflicts": [],
-    "urgent": [
-      {
-        "ticker": "MRVL",
-        "exDate": "2026-07-10",
-        "type": "现金分红",
-        "daysLeft": 0
-      },
-      {
-        "ticker": "ORCL",
-        "exDate": "2026-07-10",
-        "type": "现金分红",
-        "daysLeft": 0
-      }
-    ],
+    "urgent": [],
     "newTickers": []
   },
   "events": [
-    {
-      "ticker": "MRVL",
-      "exDate": "2026-07-10",
-      "type": "CASH",
-      "typeLabel": "现金分红",
-      "declarationDate": "2026-06-24",
-      "recordDate": "2026-07-10",
-      "payDate": "2026-07-30",
-      "cashAmount": 0.06,
-      "ratio": null,
-      "splitTo": null,
-      "splitFrom": null,
-      "confidence": "single",
-      "conflicts": [],
-      "sourcePoly": true,
-      "sourceFmp": false,
-      "sourceSec": false,
-      "secUrl": null,
-      "isNewTicker": false,
-      "ipoNote": "",
-      "daysLeft": 0
-    },
-    {
-      "ticker": "ORCL",
-      "exDate": "2026-07-10",
-      "type": "CASH",
-      "typeLabel": "现金分红",
-      "declarationDate": "2026-06-10",
-      "recordDate": "2026-07-10",
-      "payDate": "2026-07-24",
-      "cashAmount": 0.5,
-      "ratio": null,
-      "splitTo": null,
-      "splitFrom": null,
-      "confidence": "single",
-      "conflicts": [],
-      "sourcePoly": true,
-      "sourceFmp": false,
-      "sourceSec": false,
-      "secUrl": null,
-      "isNewTicker": false,
-      "ipoNote": "",
-      "daysLeft": 0
-    },
     {
       "ticker": "LLY",
       "exDate": "2026-08-14",
@@ -95,7 +38,7 @@
       "secUrl": null,
       "isNewTicker": false,
       "ipoNote": "",
-      "daysLeft": 35
+      "daysLeft": 34
     },
     {
       "ticker": "MSFT",
@@ -117,7 +60,7 @@
       "secUrl": null,
       "isNewTicker": false,
       "ipoNote": "",
-      "daysLeft": 41
+      "daysLeft": 40
     }
   ],
   "tickerMeta": {
