@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-08-04T16:06:09.739813+00:00",
-  "updatedAtCST": "2026-08-05 00:06 CST",
-  "dateFrom": "2026-08-04",
-  "dateTo": "2026-11-02",
+  "updatedAt": "2026-08-05T03:54:38.451561+00:00",
+  "updatedAtCST": "2026-08-05 11:54 CST",
+  "dateFrom": "2026-08-05",
+  "dateTo": "2026-11-03",
   "totalTickers": 30,
   "dataNote": "数据来源：Polygon（主）+ SEC EDGAR（新上市兜底）。FMP免费层不支持按ticker查询已禁用。",
   "stats": {
@@ -19,7 +19,7 @@
         "ticker": "AAPL",
         "exDate": "2026-08-10",
         "type": "现金分红",
-        "daysLeft": 6
+        "daysLeft": 5
       }
     ],
     "newTickers": []
@@ -45,7 +45,7 @@
       "secUrl": null,
       "isNewTicker": false,
       "ipoNote": "",
-      "daysLeft": 6
+      "daysLeft": 5
     },
     {
       "ticker": "LLY",
@@ -67,7 +67,7 @@
       "secUrl": null,
       "isNewTicker": false,
       "ipoNote": "",
-      "daysLeft": 10
+      "daysLeft": 9
     },
     {
       "ticker": "MSFT",
@@ -89,7 +89,7 @@
       "secUrl": null,
       "isNewTicker": false,
       "ipoNote": "",
-      "daysLeft": 16
+      "daysLeft": 15
     },
     {
       "ticker": "GOOGL",
@@ -111,7 +111,7 @@
       "secUrl": null,
       "isNewTicker": false,
       "ipoNote": "",
-      "daysLeft": 31
+      "daysLeft": 30
     }
   ],
   "tickerMeta": {
