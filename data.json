@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-08-29T17:30:51.627562+00:00",
-  "updatedAtCST": "2026-08-30 01:30 CST",
-  "dateFrom": "2026-08-29",
-  "dateTo": "2026-11-27",
+  "updatedAt": "2026-08-30T05:47:14.713660+00:00",
+  "updatedAtCST": "2026-08-30 13:47 CST",
+  "dateFrom": "2026-08-30",
+  "dateTo": "2026-11-28",
   "totalTickers": 30,
   "dataNote": "数据来源：Polygon（主）+ SEC EDGAR（新上市兜底）。FMP免费层不支持按ticker查询已禁用。",
   "stats": {
@@ -19,7 +19,7 @@
         "ticker": "GOOGL",
         "exDate": "2026-09-04",
         "type": "现金分红",
-        "daysLeft": 6
+        "daysLeft": 5
       }
     ],
     "newTickers": []
@@ -45,7 +45,7 @@
       "secUrl": null,
       "isNewTicker": false,
       "ipoNote": "",
-      "daysLeft": 6
+      "daysLeft": 5
     },
     {
       "ticker": "NVDA",
@@ -67,7 +67,7 @@
       "secUrl": null,
       "isNewTicker": false,
       "ipoNote": "",
-      "daysLeft": 12
+      "daysLeft": 11
     }
   ],
   "tickerMeta": {
