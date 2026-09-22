@@ -1,108 +1,23 @@
 {
-  "updatedAt": "2026-09-21T19:03:48.712874+00:00",
-  "updatedAtCST": "2026-09-22 03:03 CST",
-  "dateFrom": "2026-09-21",
-  "dateTo": "2026-12-20",
+  "updatedAt": "2026-09-22T05:24:05.273578+00:00",
+  "updatedAtCST": "2026-09-22 13:24 CST",
+  "dateFrom": "2026-09-22",
+  "dateTo": "2026-12-21",
   "totalTickers": 30,
   "dataNote": "数据来源：Polygon（主）+ SEC EDGAR（新上市兜底）。FMP免费层不支持按ticker查询已禁用。",
   "stats": {
-    "total": 5,
+    "total": 2,
     "confirmed2": 0,
-    "single": 5,
+    "single": 2,
     "conflict": 0,
-    "urgent7d": 3
+    "urgent7d": 0
   },
   "alerts": {
     "conflicts": [],
-    "urgent": [
-      {
-        "ticker": "META",
-        "exDate": "2026-09-21",
-        "type": "现金分红",
-        "daysLeft": 0
-      },
-      {
-        "ticker": "AVGO",
-        "exDate": "2026-09-21",
-        "type": "现金分红",
-        "daysLeft": 0
-      },
-      {
-        "ticker": "QQQ",
-        "exDate": "2026-09-21",
-        "type": "现金分红",
-        "daysLeft": 0
-      }
-    ],
+    "urgent": [],
     "newTickers": []
   },
   "events": [
-    {
-      "ticker": "META",
-      "exDate": "2026-09-21",
-      "type": "CASH",
-      "typeLabel": "现金分红",
-      "declarationDate": "2026-09-10",
-      "recordDate": "2026-09-21",
-      "payDate": "2026-09-28",
-      "cashAmount": 0.525,
-      "ratio": null,
-      "splitTo": null,
-      "splitFrom": null,
-      "confidence": "single",
-      "conflicts": [],
-      "sourcePoly": true,
-      "sourceFmp": false,
-      "sourceSec": false,
-      "secUrl": null,
-      "isNewTicker": false,
-      "ipoNote": "",
-      "daysLeft": 0
-    },
-    {
-      "ticker": "AVGO",
-      "exDate": "2026-09-21",
-      "type": "CASH",
-      "typeLabel": "现金分红",
-      "declarationDate": "2026-09-01",
-      "recordDate": "2026-09-21",
-      "payDate": "2026-09-30",
-      "cashAmount": 0.65,
-      "ratio": null,
-      "splitTo": null,
-      "splitFrom": null,
-      "confidence": "single",
-      "conflicts": [],
-      "sourcePoly": true,
-      "sourceFmp": false,
-      "sourceSec": false,
-      "secUrl": null,
-      "isNewTicker": false,
-      "ipoNote": "",
-      "daysLeft": 0
-    },
-    {
-      "ticker": "QQQ",
-      "exDate": "2026-09-21",
-      "type": "CASH",
-      "typeLabel": "现金分红",
-      "declarationDate": "2026-09-18",
-      "recordDate": "2026-09-21",
-      "payDate": "2026-10-08",
-      "cashAmount": 0.75143,
-      "ratio": null,
-      "splitTo": null,
-      "splitFrom": null,
-      "confidence": "single",
-      "conflicts": [],
-      "sourcePoly": true,
-      "sourceFmp": false,
-      "sourceSec": false,
-      "secUrl": null,
-      "isNewTicker": false,
-      "ipoNote": "",
-      "daysLeft": 0
-    },
     {
       "ticker": "ORCL",
       "exDate": "2026-10-09",
@@ -123,7 +38,7 @@
       "secUrl": null,
       "isNewTicker": false,
       "ipoNote": "",
-      "daysLeft": 18
+      "daysLeft": 17
     },
     {
       "ticker": "MSFT",
@@ -145,7 +60,7 @@
       "secUrl": null,
       "isNewTicker": false,
       "ipoNote": "",
-      "daysLeft": 59
+      "daysLeft": 58
     }
   ],
   "tickerMeta": {
