@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-10-08T19:34:08.231725+00:00",
-  "updatedAtCST": "2026-10-09 03:34 CST",
-  "dateFrom": "2026-10-08",
-  "dateTo": "2027-01-06",
+  "updatedAt": "2026-10-09T06:36:11.482789+00:00",
+  "updatedAtCST": "2026-10-09 14:36 CST",
+  "dateFrom": "2026-10-09",
+  "dateTo": "2027-01-07",
   "totalTickers": 30,
   "dataNote": "数据来源：Polygon（主）+ SEC EDGAR（新上市兜底）。FMP免费层不支持按ticker查询已禁用。",
   "stats": {
@@ -19,19 +19,19 @@
         "ticker": "MRVL",
         "exDate": "2026-10-09",
         "type": "现金分红",
-        "daysLeft": 1
+        "daysLeft": 0
       },
       {
         "ticker": "ORCL",
         "exDate": "2026-10-09",
         "type": "现金分红",
-        "daysLeft": 1
+        "daysLeft": 0
       },
       {
         "ticker": "MU",
         "exDate": "2026-10-14",
         "type": "现金分红",
-        "daysLeft": 6
+        "daysLeft": 5
       }
     ],
     "newTickers": []
@@ -57,7 +57,7 @@
       "secUrl": null,
       "isNewTicker": false,
       "ipoNote": "",
-      "daysLeft": 1
+      "daysLeft": 0
     },
     {
       "ticker": "ORCL",
@@ -79,7 +79,7 @@
       "secUrl": null,
       "isNewTicker": false,
       "ipoNote": "",
-      "daysLeft": 1
+      "daysLeft": 0
     },
     {
       "ticker": "MU",
@@ -101,7 +101,7 @@
       "secUrl": null,
       "isNewTicker": false,
       "ipoNote": "",
-      "daysLeft": 6
+      "daysLeft": 5
     },
     {
       "ticker": "MSFT",
@@ -123,7 +123,7 @@
       "secUrl": null,
       "isNewTicker": false,
       "ipoNote": "",
-      "daysLeft": 42
+      "daysLeft": 41
     }
   ],
   "tickerMeta": {
