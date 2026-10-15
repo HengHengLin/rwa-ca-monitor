@@ -1,52 +1,23 @@
 {
-  "updatedAt": "2026-10-14T18:19:18.428791+00:00",
-  "updatedAtCST": "2026-10-15 02:19 CST",
-  "dateFrom": "2026-10-14",
-  "dateTo": "2027-01-12",
+  "updatedAt": "2026-10-15T05:07:37.856649+00:00",
+  "updatedAtCST": "2026-10-15 13:07 CST",
+  "dateFrom": "2026-10-15",
+  "dateTo": "2027-01-13",
   "totalTickers": 30,
   "dataNote": "数据来源：Polygon（主）+ SEC EDGAR（新上市兜底）。FMP免费层不支持按ticker查询已禁用。",
   "stats": {
-    "total": 2,
+    "total": 1,
     "confirmed2": 0,
-    "single": 2,
+    "single": 1,
     "conflict": 0,
-    "urgent7d": 1
+    "urgent7d": 0
   },
   "alerts": {
     "conflicts": [],
-    "urgent": [
-      {
-        "ticker": "MU",
-        "exDate": "2026-10-14",
-        "type": "现金分红",
-        "daysLeft": 0
-      }
-    ],
+    "urgent": [],
     "newTickers": []
   },
   "events": [
-    {
-      "ticker": "MU",
-      "exDate": "2026-10-14",
-      "type": "CASH",
-      "typeLabel": "现金分红",
-      "declarationDate": "2026-09-30",
-      "recordDate": "2026-10-14",
-      "payDate": "2026-10-29",
-      "cashAmount": 0.15,
-      "ratio": null,
-      "splitTo": null,
-      "splitFrom": null,
-      "confidence": "single",
-      "conflicts": [],
-      "sourcePoly": true,
-      "sourceFmp": false,
-      "sourceSec": false,
-      "secUrl": null,
-      "isNewTicker": false,
-      "ipoNote": "",
-      "daysLeft": 0
-    },
     {
       "ticker": "MSFT",
       "exDate": "2026-11-19",
@@ -67,7 +38,7 @@
       "secUrl": null,
       "isNewTicker": false,
       "ipoNote": "",
-      "daysLeft": 36
+      "daysLeft": 35
     }
   ],
   "tickerMeta": {
