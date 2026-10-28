@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-10-27T19:02:24.754168+00:00",
-  "updatedAtCST": "2026-10-28 03:02 CST",
-  "dateFrom": "2026-10-27",
-  "dateTo": "2027-01-25",
+  "updatedAt": "2026-10-28T06:11:21.646726+00:00",
+  "updatedAtCST": "2026-10-28 14:11 CST",
+  "dateFrom": "2026-10-28",
+  "dateTo": "2027-01-26",
   "totalTickers": 30,
   "dataNote": "数据来源：Polygon（主）+ SEC EDGAR（新上市兜底）。FMP免费层不支持按ticker查询已禁用。",
   "stats": {
@@ -38,7 +38,7 @@
       "secUrl": null,
       "isNewTicker": false,
       "ipoNote": "",
-      "daysLeft": 17
+      "daysLeft": 16
     },
     {
       "ticker": "MSFT",
@@ -60,7 +60,7 @@
       "secUrl": null,
       "isNewTicker": false,
       "ipoNote": "",
-      "daysLeft": 23
+      "daysLeft": 22
     }
   ],
   "tickerMeta": {
