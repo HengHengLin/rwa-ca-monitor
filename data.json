@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-11-03T20:25:28.949955+00:00",
-  "updatedAtCST": "2026-11-04 04:25 CST",
-  "dateFrom": "2026-11-03",
-  "dateTo": "2027-02-01",
+  "updatedAt": "2026-11-04T06:57:55.050332+00:00",
+  "updatedAtCST": "2026-11-04 14:57 CST",
+  "dateFrom": "2026-11-04",
+  "dateTo": "2027-02-02",
   "totalTickers": 30,
   "dataNote": "数据来源：Polygon（主）+ SEC EDGAR（新上市兜底）。FMP免费层不支持按ticker查询已禁用。",
   "stats": {
@@ -38,7 +38,7 @@
       "secUrl": null,
       "isNewTicker": false,
       "ipoNote": "",
-      "daysLeft": 9
+      "daysLeft": 8
     },
     {
       "ticker": "LLY",
@@ -60,7 +60,7 @@
       "secUrl": null,
       "isNewTicker": false,
       "ipoNote": "",
-      "daysLeft": 10
+      "daysLeft": 9
     },
     {
       "ticker": "MSFT",
@@ -82,7 +82,7 @@
       "secUrl": null,
       "isNewTicker": false,
       "ipoNote": "",
-      "daysLeft": 16
+      "daysLeft": 15
     },
     {
       "ticker": "SNDK",
@@ -104,7 +104,7 @@
       "secUrl": null,
       "isNewTicker": false,
       "ipoNote": "",
-      "daysLeft": 17
+      "daysLeft": 16
     },
     {
       "ticker": "GOOGL",
@@ -126,7 +126,7 @@
       "secUrl": null,
       "isNewTicker": false,
       "ipoNote": "",
-      "daysLeft": 34
+      "daysLeft": 33
     }
   ],
   "tickerMeta": {
