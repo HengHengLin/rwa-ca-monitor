@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-11-07T18:21:53.249988+00:00",
-  "updatedAtCST": "2026-11-08 02:21 CST",
-  "dateFrom": "2026-11-07",
-  "dateTo": "2027-02-05",
+  "updatedAt": "2026-11-08T06:35:29.124677+00:00",
+  "updatedAtCST": "2026-11-08 14:35 CST",
+  "dateFrom": "2026-11-08",
+  "dateTo": "2027-02-06",
   "totalTickers": 30,
   "dataNote": "数据来源：Polygon（主）+ SEC EDGAR（新上市兜底）。FMP免费层不支持按ticker查询已禁用。",
   "stats": {
@@ -19,13 +19,13 @@
         "ticker": "AAPL",
         "exDate": "2026-11-12",
         "type": "现金分红",
-        "daysLeft": 5
+        "daysLeft": 4
       },
       {
         "ticker": "LLY",
         "exDate": "2026-11-13",
         "type": "现金分红",
-        "daysLeft": 6
+        "daysLeft": 5
       }
     ],
     "newTickers": []
@@ -51,7 +51,7 @@
       "secUrl": null,
       "isNewTicker": false,
       "ipoNote": "",
-      "daysLeft": 5
+      "daysLeft": 4
     },
     {
       "ticker": "LLY",
@@ -73,7 +73,7 @@
       "secUrl": null,
       "isNewTicker": false,
       "ipoNote": "",
-      "daysLeft": 6
+      "daysLeft": 5
     },
     {
       "ticker": "MSFT",
@@ -95,7 +95,7 @@
       "secUrl": null,
       "isNewTicker": false,
       "ipoNote": "",
-      "daysLeft": 12
+      "daysLeft": 11
     },
     {
       "ticker": "SNDK",
@@ -117,7 +117,7 @@
       "secUrl": null,
       "isNewTicker": false,
       "ipoNote": "",
-      "daysLeft": 13
+      "daysLeft": 12
     },
     {
       "ticker": "GOOGL",
@@ -139,7 +139,7 @@
       "secUrl": null,
       "isNewTicker": false,
       "ipoNote": "",
-      "daysLeft": 30
+      "daysLeft": 29
     }
   ],
   "tickerMeta": {
