@@ -1,58 +1,30 @@
 {
-  "updatedAt": "2026-11-19T21:55:14.618302+00:00",
-  "updatedAtCST": "2026-11-20 05:55 CST",
-  "dateFrom": "2026-11-19",
-  "dateTo": "2027-02-17",
+  "updatedAt": "2026-11-20T07:45:13.491764+00:00",
+  "updatedAtCST": "2026-11-20 15:45 CST",
+  "dateFrom": "2026-11-20",
+  "dateTo": "2027-02-18",
   "totalTickers": 30,
   "dataNote": "数据来源：Polygon（主）+ SEC EDGAR（新上市兜底）。FMP免费层不支持按ticker查询已禁用。",
   "stats": {
-    "total": 4,
+    "total": 3,
     "confirmed2": 0,
-    "single": 4,
+    "single": 3,
     "conflict": 0,
-    "urgent7d": 2
+    "urgent7d": 1
   },
   "alerts": {
     "conflicts": [],
     "urgent": [
       {
-        "ticker": "MSFT",
-        "exDate": "2026-11-19",
-        "type": "现金分红",
-        "daysLeft": 0
-      },
-      {
         "ticker": "SNDK",
         "exDate": "2026-11-20",
         "type": "拆股",
-        "daysLeft": 1
+        "daysLeft": 0
       }
     ],
     "newTickers": []
   },
   "events": [
-    {
-      "ticker": "MSFT",
-      "exDate": "2026-11-19",
-      "type": "CASH",
-      "typeLabel": "现金分红",
-      "declarationDate": "2026-09-14",
-      "recordDate": "2026-11-19",
-      "payDate": "2026-12-10",
-      "cashAmount": 0.98,
-      "ratio": null,
-      "splitTo": null,
-      "splitFrom": null,
-      "confidence": "single",
-      "conflicts": [],
-      "sourcePoly": true,
-      "sourceFmp": false,
-      "sourceSec": false,
-      "secUrl": null,
-      "isNewTicker": false,
-      "ipoNote": "",
-      "daysLeft": 0
-    },
     {
       "ticker": "SNDK",
       "exDate": "2026-11-20",
@@ -73,7 +45,7 @@
       "secUrl": null,
       "isNewTicker": false,
       "ipoNote": "",
-      "daysLeft": 1
+      "daysLeft": 0
     },
     {
       "ticker": "NVDA",
@@ -95,7 +67,7 @@
       "secUrl": null,
       "isNewTicker": false,
       "ipoNote": "",
-      "daysLeft": 13
+      "daysLeft": 12
     },
     {
       "ticker": "GOOGL",
@@ -117,7 +89,7 @@
       "secUrl": null,
       "isNewTicker": false,
       "ipoNote": "",
-      "daysLeft": 18
+      "daysLeft": 17
     }
   ],
   "tickerMeta": {
